@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Listado de obras{% endblock %}
+
+{% block subject %}Listado de las obras{% endblock %}
+
+{% block content %}
+
+<!-- For loop que pinta las obras guardadas en la base de datos -->
+<div class='container'>
+    {% for objects in object %}
+    <div class="pure-g-r content-ribbon">
+        <div class="pure-u-1">
+            <div class="container">
+                <div class="row">
+                     <div class="col-sm">
+                        <h4 class="content-subhead">{{ objects.title }}</h4>
+                        {% if objects.synopsis != None and objects.synopsis != '' %}{{ objects.synopsis }}
+                        {% else %} Sin sinopsis por el momento.{% endif  %}<br>
+                        {{ objects.author }}
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+
+<!-- Paginación -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
+    {% if object.has_previous %}
+    <li class="page-item"><a class="page-link" href="?pg={{ object.previous_page_number }}">{{ object.previous_page_number }}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?pg={{ object.number }}">{{ object.number }}</a></li>
+    {% if object.has_next %}
+    <li class="page-item"><a class="page-link" href="?pg={{ object.next_page_number }}">{{ object.next_page_number }}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?pg={{ object.paginator.num_pages }}">>></a></li>
+  </ul>
+</nav>
+</div>
+{% endblock  %}
+

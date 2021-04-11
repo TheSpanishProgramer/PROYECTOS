@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Detalles de las obras{% endblock %}
+
+{% block subject %}Detalles de las obras{% endblock %}
+
+{% block content %}
+
+<h3>{{ object.title }}</h3>
+<p>{% if object.synopsis != None and object.synopsis != '' %}{{ object.synopsis }}{% else %} Sin sinopsis por el momento.{% endif  %}</p>
+
+
+{% for historia in Historias %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <div class="l-box">
+            <h4 class="content-subhead">{{ object.title }}</h4>
+                {% if object.synopsis != None and object.synopsis != '' %}{{ object.synopsis }}
+                {% else %} Sin sinopsis por el momento.{% endif  %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock  %}

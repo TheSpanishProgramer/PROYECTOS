@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c89d50;">
+  <div class="form-inline my-2 my-lg-0">
+  <a class="navbar-brand" href="#">Fantasía</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </div>
+  {% if user.is_authenticated %}
+      <div class="form-inline my-2 my-lg-0">
+      <p class="m-1 font-weight-bold">Bienvenido, {{ user.username }}</p>
+      <a href="{% url 'logout' %}">
+      <button class="btn btn-dark my-2 my-sm-0 btn-sm" type="submit">Logout</button></a>
+    </div>
+  {% else %}
+  <div class="form-inline my-2 my-lg-0">
+  <a href="{% url 'register' %}">
+      <button class="btn btn-secondary my-2 my-sm-0 m-1 btn-sm" type="submit">Registro</button></a>
+    <a href="{% url 'login' %}">
+      <button class="btn btn-dark my-2 my-sm-0 btn-sm" type="submit">Login</button></a>
+    </div>
+  {% endif %}
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'list' %}">Obras</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="{% url 'your_stories' %}">Tus historias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'create' %}">Envía tu obra</a>
+      </li>
+    </ul>
+  </div>
+</nav>

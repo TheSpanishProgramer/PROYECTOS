@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Envía tu obra{% endblock %}
+
+{% block subject %}Envía tu obra{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class='container'>
+<form method='POST' novalidate> {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.title|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.author|as_crispy_field }}
+      </div>
+    </div>
+    {{ form.synopsis|as_crispy_field }}
+    {{ form.genre|as_crispy_field }}
+    <button type="submit" class="btn btn-dark">Envía tu texto</button>
+</form>
+</div>
+{% endblock  %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block subject %}Login de usuario{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    <div class='container'>
+
+
+        <form method='POST' class='mt-3 col-6'>
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <button class="btn btn-dark mb-5" type='submit'>Login</button>
+        </form>
+    </div>
+{% endblock  %}
